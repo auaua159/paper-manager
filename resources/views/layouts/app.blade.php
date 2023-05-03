@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/icons.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/031305cb2a.js" crossorigin="anonymous"></script>
 </head>
 
