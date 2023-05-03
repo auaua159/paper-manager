@@ -36,24 +36,6 @@
                         <label class="col-sm-2 col-form-label">Rating</label>
                         <div class="col-sm-10">
                             <div class="rate-form">
-                                <!-- <div class="mt-2">
-                                    
-                                    <input class="fa-solid fa-star" id="star0" type="radio" name="rate" value="1">
-                                    <button type="button" class="fa-regular fa-star" id="star1"></button>
-                                    <i class="fa-regular fa-star" id="star2"></i>
-                                    <i class="fa-regular fa-star" id="star3"></i>
-                                    <i class="fa-regular fa-star" id="star4"></i>
-                                </div> -->
-                                <!-- <input id="star5" type="radio" name="rate" value="5">
-                                <label for="star5">★</label>
-                                <input id="star4" type="radio" name="rate" value="4">
-                                <label for="star4" >★</label>
-                                <input id="star3" type="radio" name="rate" value="3">
-                                <label for="star3">★</label>
-                                <input id="star2" type="radio" name="rate" value="2">
-                                <label for="star2">★</label>
-                                <input id="star1" type="radio" name="rate" value="1">
-                                <label for="star1">★</label> -->
                                 <div class="mt-2">
                                     <input id="Star0" type="radio" name="rate" value="1" style="display: none;">
                                     <label for="Star0"><i class="fa-solid fa-star" id="star0"></i></label>
@@ -77,5 +59,6 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset('js/star-rating.js') }}"></script>
 @endsection
