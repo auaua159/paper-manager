@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paper;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,9 @@ class HomeController extends Controller
             ->whereNull('deleted_at')
             ->orderBy('updated_at', 'DESC')
             ->get();
-        return view('home', compact('papers'));
+        $user = User::select('users.*')
+            ->get();
+        return view('home', compact('papers', 'user'));
     }
 
     public function create()

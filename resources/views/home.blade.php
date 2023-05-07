@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
-                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5><a href={{ $paper['url'] }} align="right"><i class="fa-solid fa-up-right-from-square"></i></a>
+                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5><a href={{ $paper['url'] }} target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
                                     </div>
                                 </div>
 
@@ -54,7 +54,7 @@
                                                 @endif
                                                 @endfor
                                         </div>
-                                        Added by: {{ $paper['user_id'] }}
+                                        Added by: {{ $user[$paper['user_id'] - 1]['name'] }}
                                     </div>
                                 </div>
                             </div>
