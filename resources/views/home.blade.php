@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">論文一覧</div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        論文一覧<a href="/create"><i class="fa-solid fa-plus"></i></a>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="mt-2 mb-2">
                         @foreach($papers as $paper)
@@ -13,7 +17,17 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
-                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5><a href={{ $paper['url'] }} target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5>
+                                        <div>
+                                            @if ($paper['user_id'] == $user_id)
+                                            <form action={{ route('destroy') }} method="POST">
+                                                @csrf
+                                                <input type="hidden" name="paper_id" value={{ $paper['id'] }}>
+                                                <button type="submit"></button>
+                                            </form>
+                                            @endif
+                                            <a href={{ $paper['url'] }} target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+                                        </div>
                                     </div>
                                 </div>
 

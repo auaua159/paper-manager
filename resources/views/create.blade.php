@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">論文追加</div>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        論文追加<a href="/home"><i class="fa-solid fa-xmark"></i></a>
+                    </div>
+                </div>
                 <form action="{{ route('store') }}" method="POST">
                     @csrf
                     <div class="row m-3">

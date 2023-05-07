@@ -32,7 +32,8 @@ class HomeController extends Controller
             ->get();
         $user = User::select('users.*')
             ->get();
-        return view('home', compact('papers', 'user'));
+        $user_id = \Auth::id();
+        return view('home', compact('papers', 'user', 'user_id'));
     }
 
     public function create()
@@ -45,6 +46,13 @@ class HomeController extends Controller
     {
         $posts = $request->all();
         Paper::insert(['title' => $posts['title'], 'url' => $posts['url'], 'comment' => $posts['comment'], 'abstract' => $posts['abstract'], 'assessment' => $posts['rate'], 'user_id' => \Auth::id()]);
+        return redirect(route('home'));
+    }
+
+    public function destroy(Request $request)
+    {
+        $posts = $request->all();
+        Paper::where('id', $posts['paper_id'])->update(['deleted_at' => date("Y-m-d H:i:s", time())]);
         return redirect(route('home'));
     }
 }

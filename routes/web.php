@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create', [HomeController::class, 'create'])->name('create');
 Route::post('/store', [HomeController::class, 'store'])->name('store');
+Route::post('/destroy', [HomeController::class, 'destroy'])->name('destroy');
