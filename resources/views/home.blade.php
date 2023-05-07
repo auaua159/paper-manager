@@ -12,32 +12,34 @@
                         <div class="container mt-2 mb-2 col-md-10 justify-content-center">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="paper-title">{{ $paper['title'] }}</h5>
+                                    <div class="d-flex justify-content-between">
+                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5><a href={{ $paper['url'] }} align="right"><i class="fa-solid fa-up-right-from-square"></i></a>
+                                    </div>
                                 </div>
 
                                 <div class="card-body">
                                     <div class="accordion" id={{ "acordion".$paper['id'] }}>
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id={{ "comment".$paper['id'] }}>
-                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={{ '#commentCollapse'.$paper['id'] }} aria-expanded="false" aria-controls={{ "commentCollapse".$paper['id'] }}>
-                                                    Comment
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={{ '#commentCollapse'.$paper['id'] }} aria-expanded="true" aria-controls={{ "commentCollapse".$paper['id'] }}>
+                                                    Abstract
                                                 </button>
                                             </h2>
-                                            <div id={{ "commentCollapse".$paper['id'] }} class="accordion-collapse collapse" aria-labelledby={{ "comment".$paper['id'] }}>
+                                            <div id={{ "commentCollapse".$paper['id'] }} class="accordion-collapse collapse show" aria-labelledby={{ "comment".$paper['id'] }}>
                                                 <div class="accordion-body">
-                                                    {{ $paper['comment'] }}
+                                                    {{ $paper['abstract'] }}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id={{ "abstract".$paper['id'] }}>
                                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={{ '#abstractCollapse'.$paper['id'] }} aria-expanded="false" aria-controls={{ "abstractCollapse".$paper['id'] }}>
-                                                    Abstract
+                                                    Comment
                                                 </button>
                                             </h2>
                                             <div id={{ "abstractCollapse".$paper['id'] }} class="accordion-collapse collapse" aria-labelledby={{ "abstract".$paper['id'] }}>
                                                 <div class="accordion-body">
-                                                    {{ $paper['abstract'] }}
+                                                    {{ $paper['comment'] }}
                                                 </div>
                                             </div>
                                         </div>
@@ -45,7 +47,15 @@
                                 </div>
 
                                 <div class="card-footer">
-                                    {{ $paper['user_id'] }}
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            @for($i = 0; $i < 5; $i++) @if($i < $paper['assessment'])<i class="fa-solid fa-star"></i>
+                                                @else <i class="fa-regular fa-star"></i>
+                                                @endif
+                                                @endfor
+                                        </div>
+                                        Added by: {{ $paper['user_id'] }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
