@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('javascript')
+<script src="/js/confirm.js"></script>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,16 +20,19 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex justify-content-between">
-                                        <h5 class="paper-title mb-0">{{ $paper['title'] }}</h5>
-                                        <div>
+                                        <div class="d-flex justify-content-between">
+                                            <h5 class="paper-title mb-0 mx-1">{{ $paper['title'] }}</h5>
+                                            <a href={{ $paper['url'] }} target="_blank"><i class="fa-solid fa-up-right-from-square mx-1"></i></a>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
                                             @if ($paper['user_id'] == $user_id)
-                                            <form action={{ route('destroy') }} method="POST">
+                                            <a href="/edit/{{ $paper['id'] }}"><i class="fa-solid fa-pen-to-square mx-1"></i></a>
+                                            <form action={{ route('destroy') }} method="POST" id="delete-form{{ $paper['id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="paper_id" value={{ $paper['id'] }}>
-                                                <button type="submit"></button>
+                                                <i class="fa-solid fa-trash mx-1" onclick="deleteHandle(event,{{ $paper['id'] }});"></i>
                                             </form>
                                             @endif
-                                            <a href={{ $paper['url'] }} target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
                                         </div>
                                     </div>
                                 </div>

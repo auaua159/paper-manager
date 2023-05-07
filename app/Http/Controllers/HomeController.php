@@ -38,7 +38,6 @@ class HomeController extends Controller
 
     public function create()
     {
-
         return view('create');
     }
 
@@ -46,6 +45,19 @@ class HomeController extends Controller
     {
         $posts = $request->all();
         Paper::insert(['title' => $posts['title'], 'url' => $posts['url'], 'comment' => $posts['comment'], 'abstract' => $posts['abstract'], 'assessment' => $posts['rate'], 'user_id' => \Auth::id()]);
+        return redirect(route('home'));
+    }
+
+    public function edit($id)
+    {
+        $edit_paper = Paper::find($id);
+        return view('edit', compact('edit_paper'));
+    }
+
+    public function update(Request $request)
+    {
+        $posts = $request->all();
+        Paper::where('id', $posts['paper_id'])->update(['title' => $posts['title'], 'url' => $posts['url'], 'comment' => $posts['comment'], 'abstract' => $posts['abstract'], 'assessment' => $posts['rate'], 'user_id' => \Auth::id()]);
         return redirect(route('home'));
     }
 
