@@ -3,6 +3,7 @@
 @section('javascript')
 <script src="/js/confirm.js"></script>
 @endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -30,7 +31,7 @@
                                             <form action={{ route('destroy') }} method="POST" id="delete-form{{ $paper['id'] }}">
                                                 @csrf
                                                 <input type="hidden" name="paper_id" value={{ $paper['id'] }}>
-                                                <i class="fa-solid fa-trash mx-1" onclick="deleteHandle(event,{{ $paper['id'] }});"></i>
+                                                <i class="fa-solid fa-trash mx-1" onclick="deleteHandle(event,{{ $paper['id'] }});" style="cursor: hand; cursor:pointer;"></i>
                                             </form>
                                             @endif
                                         </div>
